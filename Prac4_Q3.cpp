@@ -15,7 +15,11 @@ int rotate = 0;
 int move_arm = 0;
 int already_move_arm = 0;
 float move_arm_rotate = 0.05;
+<<<<<<< HEAD
+float move_angle = 20;
+=======
 float move_angle = 10;
+>>>>>>> 7378acc1914b3d8733b4a32f48de8fd2bffcbd97
 LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
@@ -96,11 +100,109 @@ void display()
 	//--------------------------------
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
+<<<<<<< HEAD
+	
+=======
+>>>>>>> 7378acc1914b3d8733b4a32f48de8fd2bffcbd97
 	if (rotate == 1) {
 		glRotatef(direction, 1, 1, 1);
 		
 	}
 	
+<<<<<<< HEAD
+	if (move_arm == 1) {
+		glPushMatrix();
+		
+		glBegin(GL_LINES);
+
+		glVertex3f(0, -2, 0);
+		glVertex3f(0, 0, 0);
+		glVertex3f(0, 0, 0);
+		glVertex3f(0, 0, 2);
+		glVertex3f(0, 0, 2);
+		glVertex3f(0, -2, 2);
+		glVertex3f(0, -2, 2);
+		glVertex3f(0, -2, 0);
+
+		glVertex3f(0, -2, 2);
+		glVertex3f(4, -2, 2);
+		glVertex3f(4, -2, 2);
+		glVertex3f(4, -2, 0);
+		glVertex3f(4, -2, 0);
+		glVertex3f(0, -2, 0);
+		glVertex3f(0, -2, 0);
+		glVertex3f(0, -2, 2);
+
+		glVertex3f(4, -2, 2);
+		glVertex3f(4, 0, 2);
+		glVertex3f(4, 0, 2);
+		glVertex3f(4, 0, 0);
+		glVertex3f(4, 0, 0);
+		glVertex3f(4, -2, 0);
+		glVertex3f(4, -2, 0);
+		glVertex3f(4, -2, 2);
+
+		glVertex3f(4, 0, 2);
+		glVertex3f(4, 0, 0);
+		glVertex3f(4, 0, 0);
+		glVertex3f(0, 0, 0);
+		glVertex3f(0, 0, 0);
+		glVertex3f(0, 0, 2);
+		glVertex3f(0, 0, 2);
+		glVertex3f(4, 0, 2);
+
+		glEnd();
+		glPopMatrix();
+	}
+	else {
+		glBegin(GL_LINES);
+
+		glVertex3f(0, -2, 0);
+		glVertex3f(0, 0, 0);
+		glVertex3f(0, 0, 0);
+		glVertex3f(0, 0, 2);
+		glVertex3f(0, 0, 2);
+		glVertex3f(0, -2, 2);
+		glVertex3f(0, -2, 2);
+		glVertex3f(0, -2, 0);
+
+		glVertex3f(0, -2, 2);
+		glVertex3f(4, -2, 2);
+		glVertex3f(4, -2, 2);
+		glVertex3f(4, -2, 0);
+		glVertex3f(4, -2, 0);
+		glVertex3f(0, -2, 0);
+		glVertex3f(0, -2, 0);
+		glVertex3f(0, -2, 2);
+
+		glVertex3f(4, -2, 2);
+		glVertex3f(4, 0, 2);
+		glVertex3f(4, 0, 2);
+		glVertex3f(4, 0, 0);
+		glVertex3f(4, 0, 0);
+		glVertex3f(4, -2, 0);
+		glVertex3f(4, -2, 0);
+		glVertex3f(4, -2, 2);
+
+		glVertex3f(4, 0, 2);
+		glVertex3f(4, 0, 0);
+		glVertex3f(4, 0, 0);
+		glVertex3f(0, 0, 0);
+		glVertex3f(0, 0, 0);
+		glVertex3f(0, 0, 2);
+		glVertex3f(0, 0, 2);
+		glVertex3f(4, 0, 2);
+
+		glEnd();
+	}
+	
+	
+	if (move_arm == 1) {
+		glPushMatrix();
+		
+		glRotatef(move_angle, 0,0, 1);
+		glTranslatef(-0.2, -1.3, 0.0);
+=======
 		
 	glBegin(GL_LINES);
 
@@ -145,6 +247,7 @@ void display()
 	if (move_arm == 1) {
 		glPushMatrix();
 		glRotatef(move_angle, 0,0, 1);
+>>>>>>> 7378acc1914b3d8733b4a32f48de8fd2bffcbd97
 		glBegin(GL_LINES);
 
 		glVertex3f(4, 0, 2);
@@ -191,7 +294,13 @@ void display()
 			move_angle = 20;
 		}
 		glPushMatrix();
+<<<<<<< HEAD
+		
+		glRotatef(-20, 0, 0, 1);
+		glTranslatef(0.4, 1.5, 0.0);
+=======
 		glRotatef(-move_angle, 0, 0, 1);
+>>>>>>> 7378acc1914b3d8733b4a32f48de8fd2bffcbd97
 		glBegin(GL_LINES);
 
 		glVertex3f(4, 0, 2);
