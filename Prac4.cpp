@@ -6,17 +6,10 @@
 #pragma comment (lib, "OpenGL32.lib")
 
 #define WINDOW_TITLE "OpenGL Window"
-int num = 3;
 float rotate = 0.05;
-const double PI = 3.141592654;
-float direction = 0.05;
-float  counter = 0.06;
-bool stopMill = false;
-bool night = false;
-
-float rForSky = 0.596078;
-float gForSky = 0.6;
-float bForSky = 0.8;
+int x_rotate = 0;
+int y_rotate = 0;
+int z_rotate = 0;
 LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
@@ -27,27 +20,20 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 
 	case WM_KEYDOWN:
 		if (wParam == VK_ESCAPE) PostQuitMessage(0);
-		if (wParam == VK_UP) {
-
-			if (num < 10) {
-
-				num++;
-			}
-
+		if (wParam == 'X') {
+			x_rotate = 1;
+			y_rotate = 0;
+			z_rotate = 0;
 		}
-		if (wParam == VK_DOWN) {
-
-			if (num > 3)
-
-				num--;
+		if (wParam == 'Y') {
+			x_rotate = 0;
+			y_rotate = 1;
+			z_rotate = 0;
 		}
-		if (wParam == VK_SPACE) {
-			glLoadIdentity();
-			stopMill ^= true;
-		}
-		if (wParam == 'T') {
-			(direction == 0.5) ? (direction = 0.05) : (direction = 0.5);
-
+		if (wParam == 'Z') {
+			x_rotate = 0;
+			y_rotate = 0;
+			z_rotate = 1;
 		}
 		break;
 
@@ -98,7 +84,19 @@ void display()
 	//--------------------------------
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
-	glRotatef(0.05, 1, 1, 1);
+	
+	if (x_rotate) {
+		glRotatef(rotate, 1, 0, 0);
+		
+	}
+	else if (y_rotate) {
+		glRotatef(rotate, 0, 1, 0);
+		
+	}
+	else if (z_rotate) {
+		glRotatef(rotate, 0, 0, 1);
+		
+	}
 	
 	glBegin(GL_LINES);
 	

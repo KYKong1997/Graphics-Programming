@@ -4,6 +4,7 @@
 #include<tchar.h>
 #include <stdio.h>
 #include<ctime>
+
 #pragma comment (lib, "OpenGL32.lib")
 #define WINDOW_TITLE "OpenGL Window"
 float direction = 0;
@@ -33,17 +34,12 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			move_arm = 0;
 			already_move_arm = 0;
 			glLoadIdentity();
-			glRotatef(90, 1, 0, 0);
+			glRotatef(270, 1, 0, 0);
 			direction = 0;
 			move_angle = 0;
 			
 		}
 		if (wParam == VK_UP) {
-			move_arm = 1;
-			already_move_arm = 1;
-			
-			
-			
 			if (move_angle > 90) {
 				move_angle = move_angle;
 			}
@@ -52,7 +48,7 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			}
 		}
 		if (wParam == VK_DOWN) {
-			move_arm = -1;
+			
 			
 			if (move_angle < 0) {
 				move_angle = move_angle;
@@ -115,7 +111,12 @@ void display()
 	glRotatef(direction, 1, 1, 1);
 
 	glPushMatrix();
-	glRotatef(move_angle, 0, -1, 0);
+	glTranslatef(0.0, 0.2, 0);
+
+	glRotatef(move_angle, 0, 1, 0);
+	glTranslatef(0, -0.2, 0);
+	//glRotatef(move_angle, 0, -1, 0);
+	//glRotatef(move_angle, 0, 0, 0);
 	glBegin(GL_LINES);
 	glColor3f(1, 1, 1);
 	//left cube
@@ -208,6 +209,7 @@ void display()
 	glVertex3f(.6, .2, .2);
 
 	glEnd(); 
+	
 	//	End of OpenGL drawing
 	//--------------------------------
 }
@@ -243,7 +245,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	ZeroMemory(&msg, sizeof(msg));
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glRotatef(90, 1, 0, 0);
+	glRotatef(270, 1, 0, 0);
 	while (true)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
